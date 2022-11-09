@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaapplication3.modelo.Fecha;
+import javaapplication3.controlador.conexionSQL;
 
 /**
  *
@@ -145,6 +146,11 @@ public class InterfazEmpleado extends javax.swing.JFrame {
         });
 
         butonCalcAntig.setText("Calcular Antiguedad");
+        butonCalcAntig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butonCalcAntigActionPerformed(evt);
+            }
+        });
 
         butonCalcPrest.setText("Calcular Prestaciones");
 
@@ -307,7 +313,8 @@ public class InterfazEmpleado extends javax.swing.JFrame {
     private void textFNacimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFNacimActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFNacimActionPerformed
-
+    
+    
     private void butonCalcEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butonCalcEdadActionPerformed
 
         
@@ -333,18 +340,45 @@ public class InterfazEmpleado extends javax.swing.JFrame {
                 int dia = resultset.getInt("diaN");
                 
                 Fecha calcEdad = new Fecha();
-                calcEdad.calcularEdad(anio, mes, dia);
+                calcEdad.calcularTiempo(anio, mes, dia);
                 
-                textcalcedad.setText(calcEdad.calcularEdad(anio, mes, dia));
+                textcalcedad.setText(calcEdad.calcularTiempo(anio, mes, dia));
 
             }
 
-            //textNombre.setText(resultset.getString("Nombre"));
+//            textNombre.setText(resultset.getString("Nombre"));
 
         } catch (SQLException ex) {
             Logger.getLogger(InterfazEmpleado.class.getName()).log(Level.SEVERE, null, ex);
         } // TODO add your handling code here:
     }//GEN-LAST:event_butonCalcEdadActionPerformed
+
+    private void butonCalcAntigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butonCalcAntigActionPerformed
+        
+        
+        // GUARDA EL ID DE LA PERSONA 
+        String idCampo = textId.getText();
+        
+        //
+        Fecha calcAntig = new Fecha();
+        
+        
+        conexionSQL conect = new conexionSQL();
+        
+        // SENTENCIA SQL (TRAE LOS DATOS DE FECHA INGRESO)
+        conect.ejecutarSentenciaSQL("SELECT YEAR (FechaIngreso) as anioI , MONTH (FechaIngreso) as mesI WHERE DNI = "+ idCampo);
+        
+        // GUARDA EN VARIABLES LOS DATOS TRAIDOS DE SQL
+        
+        
+        
+        //calcAntig.calcularTiempo(, WIDTH, WIDTH)
+        
+        
+        
+        
+        //textcalcant.setText(idCampo);
+    }//GEN-LAST:event_butonCalcAntigActionPerformed
 
     
     // ESTE METODO SE CREA PARA IMPLEMENTARLO EN LA ACCION QUE OCURRE AL PULSAR EL BOTON

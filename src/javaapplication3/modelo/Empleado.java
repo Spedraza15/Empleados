@@ -52,6 +52,8 @@ public void cambiarSalario(int pSalario){
 }
 
 public int darAntiguedad(){
+    
+    
 
 }
 
