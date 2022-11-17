@@ -18,7 +18,7 @@ import javaapplication3.controlador.conexionSQL;
  */
 public class InterfazEmpleado extends javax.swing.JFrame {
     
-    
+    conexionSQL conectarsql = new conexionSQL();
     
 
     /**
@@ -26,6 +26,7 @@ public class InterfazEmpleado extends javax.swing.JFrame {
      */
     public InterfazEmpleado() {
         initComponents();
+        
         
         
     }
@@ -64,6 +65,9 @@ public class InterfazEmpleado extends javax.swing.JFrame {
         butonCalcAntig = new javax.swing.JButton();
         butonCalcPrest = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,11 +116,11 @@ public class InterfazEmpleado extends javax.swing.JFrame {
         labelImage.setLayout(labelImageLayout);
         labelImageLayout.setHorizontalGroup(
             labelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 179, Short.MAX_VALUE)
+            .addGap(0, 113, Short.MAX_VALUE)
         );
         labelImageLayout.setVerticalGroup(
             labelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 188, Short.MAX_VALUE)
+            .addGap(0, 121, Short.MAX_VALUE)
         );
 
         jLabel2.setText("Id Empleado");
@@ -133,10 +137,18 @@ public class InterfazEmpleado extends javax.swing.JFrame {
         jLabel3.setText("Fecha de Ingreso");
 
         textcalcedad.setEditable(false);
+        textcalcedad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textcalcedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textcalcedadActionPerformed(evt);
+            }
+        });
 
         textcalcant.setEditable(false);
+        textcalcant.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         textcalcprest.setEditable(false);
+        textcalcprest.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         butonCalcEdad.setText("Calcular Edad");
         butonCalcEdad.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +157,7 @@ public class InterfazEmpleado extends javax.swing.JFrame {
             }
         });
 
-        butonCalcAntig.setText("Calcular Antiguedad");
+        butonCalcAntig.setText("Antigüedad");
         butonCalcAntig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butonCalcAntigActionPerformed(evt);
@@ -165,11 +177,11 @@ public class InterfazEmpleado extends javax.swing.JFrame {
                     .addComponent(butonCalcAntig, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(butonCalcEdad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(37, 37, 37)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textcalcant, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(textcalcprest)
-                    .addComponent(textcalcedad, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textcalcant)
+                    .addComponent(textcalcedad, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                    .addComponent(textcalcprest, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +208,7 @@ public class InterfazEmpleado extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(255, 255, 255)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -206,14 +218,31 @@ public class InterfazEmpleado extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 198, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(198, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        jButton2.setText("Agregar");
+
+        jButton3.setText("Editar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Eliminar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,76 +251,85 @@ public class InterfazEmpleado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(58, 58, 58)
-                                .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(labelFNacim)
-                                        .addComponent(labelNombre, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelApellido, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelSexo, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(textNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                                            .addComponent(textApellido)
-                                            .addComponent(textSexo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(textFNacim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                        .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel2)
+                                        .addGap(58, 58, 58)
+                                        .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(textFechaIngr, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addGap(33, 33, 33))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(labelFNacim)
+                                                .addComponent(labelNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(labelApellido, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(labelSexo, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addComponent(jLabel3))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textFechaIngr, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(textNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(textApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(textSexo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(textFNacim, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(94, 94, 94)
+                                                .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(88, 88, 88)
+                                        .addComponent(jButton2)
+                                        .addGap(58, 58, 58)
+                                        .addComponent(jButton3)
+                                        .addGap(66, 66, 66)
+                                        .addComponent(jButton4)))
+                                .addGap(135, 135, 135)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
+                .addGap(23, 23, 23)
+                .addComponent(labelImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(textId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNombre)
+                    .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelApellido)
+                    .addComponent(textApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSexo)
+                    .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelNombre)
-                            .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelApellido)
-                            .addComponent(textApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelSexo)
-                            .addComponent(textSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelFNacim)
-                            .addComponent(textFNacim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(26, 26, 26)
+                    .addComponent(labelFNacim)
+                    .addComponent(textFNacim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(textFechaIngr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -317,68 +355,68 @@ public class InterfazEmpleado extends javax.swing.JFrame {
     
     private void butonCalcEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butonCalcEdadActionPerformed
 
-        
+        Fecha calcEdad = new Fecha();
+        ResultSet rs;
         
         String idCampo = textId.getText();
-
-//        Date fechaNacimiento = Date.valueOf(textFNacim.getText());
-        String request = "SELECT YEAR (FechaNacimiento) as anioN, month(FechaNacimiento) mesN, day(FechaNacimiento) as diaN  FROM empleados where DNI = "+ idCampo;
+        String consulta = "SELECT YEAR (FechaNacimiento), month(FechaNacimiento), day(FechaNacimiento) FROM empleados where DNI = "+ idCampo;
         
-        
-
         try {
-            Connection conexionsql=DriverManager.getConnection("jdbc:mysql://localhost:3306/empleados", "root", "root");
+            conectarsql.conection();
 
-            Statement statement = conexionsql.createStatement();
+            Statement statement = conectarsql.getConexionsql().createStatement();
+            rs = statement.executeQuery(consulta);
 
-            ResultSet resultset = statement.executeQuery(request);
-
-            while(resultset.next()){
+            while(rs.next()){                 
                 
-                int anio = resultset.getInt("anioN");
-                int mes = resultset.getInt("mesN");
-                int dia = resultset.getInt("diaN");
-                
-                Fecha calcEdad = new Fecha();
-                calcEdad.calcularTiempo(anio, mes, dia);
-                
-                textcalcedad.setText(calcEdad.calcularTiempo(anio, mes, dia));
+                textcalcedad.setText(calcEdad.calcularTiempo(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
 
             }
 
-//            textNombre.setText(resultset.getString("Nombre"));
-
         } catch (SQLException ex) {
             Logger.getLogger(InterfazEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+            
         } // TODO add your handling code here:
     }//GEN-LAST:event_butonCalcEdadActionPerformed
 
     private void butonCalcAntigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butonCalcAntigActionPerformed
         
+        Fecha calcEdad = new Fecha();
+        ResultSet rs;
         
-        // GUARDA EL ID DE LA PERSONA 
         String idCampo = textId.getText();
+        String consulta = "SELECT YEAR (FechaIngreso) , month(FechaIngreso) , day(FechaIngreso) FROM empleados where DNI = "+ idCampo ;
+             
+       
         
-        //
-        Fecha calcAntig = new Fecha();
-        
-        
-        conexionSQL conect = new conexionSQL();
-        
-        // SENTENCIA SQL (TRAE LOS DATOS DE FECHA INGRESO)
-        conect.ejecutarSentenciaSQL("SELECT YEAR (FechaIngreso) as anioI , MONTH (FechaIngreso) as mesI WHERE DNI = "+ idCampo);
-        
-        // GUARDA EN VARIABLES LOS DATOS TRAIDOS DE SQL
-        
-        
-        
-        //calcAntig.calcularTiempo(, WIDTH, WIDTH)
-        
-        
-        
-        
-        //textcalcant.setText(idCampo);
+        try {
+            conectarsql.conection();
+            
+            Statement st = conectarsql.getConexionsql().createStatement();       
+            rs = st.executeQuery(consulta);
+            
+            while(rs.next()){   
+                
+            textcalcant.setText(calcEdad.calcularTiempo(rs.getInt(1), rs.getInt(2), rs.getInt(3)));
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfazEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
     }//GEN-LAST:event_butonCalcAntigActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void textcalcedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textcalcedadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textcalcedadActionPerformed
 
     
     // ESTE METODO SE CREA PARA IMPLEMENTARLO EN LA ACCION QUE OCURRE AL PULSAR EL BOTON
@@ -414,6 +452,11 @@ public class InterfazEmpleado extends javax.swing.JFrame {
         }
     
 }
+    
+    public String getTextId(){
+        return textId.getText();
+    }
+    
     
     
     /**
@@ -454,34 +497,7 @@ public class InterfazEmpleado extends javax.swing.JFrame {
             
         });
         
-        //ESTAS LINEAS ESTAN DENTRO DEL METODO  cambiarCampos()
-        
-//        try{
-//            
-//            //1 creando conexion con la bd
-//            Connection conexionsql=DriverManager.getConnection("jdbc:mysql://localhost:3306/empleados", "root", "root");
-//            
-//            //2 CREAR OBJETO STATEMENT
-//            Statement statement = conexionsql.createStatement();
-//            
-//            //3 EJECUTAR LA INSTRUCCION SQL
-//            
-//            ResultSet resultset = statement.executeQuery("SELECT * FROM EMPLEADOS WHERE DNI = 100022334");
-//            
-//            //4 RECORRER EL RESULTSET
-//            
-//            while(resultset.next()){
-//                
-//                System.out.println(resultset.getString("Nombre")+ " " + resultset.getString("DNI"));
-//            }
-//                        
-//            
-//        }catch(Exception e){
-//            
-//            System.out.println("No Se logra conectar");
-//            e.printStackTrace();
-//        }
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -489,6 +505,9 @@ public class InterfazEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton butonCalcEdad;
     private javax.swing.JButton butonCalcPrest;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

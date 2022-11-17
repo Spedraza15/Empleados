@@ -63,17 +63,13 @@ public int darMes(){
 
 }
 
-public void calcularTiempo (int a, int m, int d) {
-    
-   
-    this.anio = a ;
-    this.mes = m ;
-    this.dia = d ;
-    
-    Period edad = Period.between(LocalDate.of(a, m, d), LocalDate.now());
-    String textf = (String.format("%d años ,%d meses y %d dias", edad.getYears(), edad.getMonths(), edad.getDays()));   
+public static String calcularTiempo (int a, int m, int d) {
        
-    System.out.println(textf);
+    Period edad = Period.between(LocalDate.of(a, m, d), LocalDate.now());
+    String textf = (String.format("%d años ", edad.getYears()));   
+       
+    
+    return textf;
 }
     
 

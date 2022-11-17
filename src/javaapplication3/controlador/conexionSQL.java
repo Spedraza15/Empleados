@@ -4,15 +4,22 @@
  */
 package javaapplication3.controlador;
 
+import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.Calendar;
+import javaapplication3.interfaz.InterfazEmpleado;
 import javaapplication3.modelo.Fecha;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Santiago
  */
 public class conexionSQL {
+    
+    Connection conexionsql;
+    InterfazEmpleado interfazEmpleado;
+    
     
 //    Connection conexion = null;
 //    
@@ -50,57 +57,93 @@ public class conexionSQL {
 //        
 //    }
     
-    public void conexionDB(String columna, int DNI){
+//    public void conexionDB(String columna, int DNI){
+//
+//
+//        String request = "SELECT YEAR (" +columna+ ") as anioN, month("+ columna +") mesN, day("+ columna+ ") as diaN  FROM empleados where DNI = " + DNI;
+//        String req = "SELECT " + columna + "FROM empleados where DNI = " + DNI;
+//        
+//
+//        try {
+//            Connection conexionsql=DriverManager.getConnection("jdbc:mysql://localhost:3306/empleados", "root", "root");
+//
+//            Statement statement = conexionsql.createStatement();
+//
+//            ResultSet resultset = statement.executeQuery(request);
+//
+//            while(resultset.next()){
+//                
+//                int anio = resultset.getInt("anioN");
+//                int mes = resultset.getInt("mesN");
+//                int dia = resultset.getInt("diaN");
+//                System.out.println("año" + anio + " mes "+mes+" dia "+dia);         
+//            Fecha calcTiempo = new Fecha();
+//            calcTiempo.calcularTiempo(anio, mes, dia);
+//            
+//            
+//            }
+//
+//        } catch (SQLException ex) {
+//            System.out.println("error" + "\n" + ex);
+//      
+//        }
+//       
+//
+//    }
 
+    public  Connection getConexionsql() {
+        return conexionsql;
+    }
 
-        String request = "SELECT YEAR (" +columna+ ") as anioN, month("+ columna +") mesN, day("+ columna+ ") as diaN  FROM empleados where DNI = " + DNI;
-        String req = "SELECT " + columna + "FROM empleados where DNI = " + DNI;
-        
+    
 
-        try {
-            Connection conexionsql=DriverManager.getConnection("jdbc:mysql://localhost:3306/empleados", "root", "root");
+    public InterfazEmpleado getInterfazEmpleado() {
+        return interfazEmpleado;
+    }
 
-            Statement statement = conexionsql.createStatement();
+    public void setInterfazEmpleado(InterfazEmpleado interfazEmpleado) {
+        this.interfazEmpleado = interfazEmpleado;
+    }
 
-            ResultSet resultset = statement.executeQuery(request);
-
-            while(resultset.next()){
+    
+    
+    
+    public  void conection() throws SQLException{
+        String jdbc = "jdbc:mysql://localhost:3306/empleados";
+        conexionsql = DriverManager.getConnection(jdbc, "root", "root");
+    }
+    
+    public ResultSet consulta(String columna, String DNI) throws SQLException{
+        final String request = "SELECT ? from empleados WHERE DNI  = ?";
+        PreparedStatement st = conexionsql.prepareStatement(request);
+        st.setString(1, columna);
+        st.setString(2, DNI);
+        ResultSet rs = st.executeQuery();
                 
-                int anio = resultset.getInt("anioN");
-                int mes = resultset.getInt("mesN");
-                int dia = resultset.getInt("diaN");
-                System.out.println("año" + anio + " mes "+mes+" dia "+dia);         
-            Fecha calcTiempo = new Fecha();
-            calcTiempo.calcularTiempo(anio, mes, dia);
-            
-            
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("error");
-      
-        }
-       
-
+        return rs;
     }
     
     
-    public Connection conection(){
-        try {
-            Connection conexionsql=DriverManager.getConnection("jdbc:mysql://localhost:3306/empleados", "root", "root");
-            
-        }
-        catch(SQLException ex){
-            System.out.println("error");
-        }
-        return conection();
-               
-    }
+    
+    
     
     public void statement(String columna, int DNI){
-        conection();
         
-        String req = "SELECT " + columna + "FROM empleados where DNI = " + DNI;
+        ResultSet rs = null;
+        String req = "SELECT YEAR (" +columna+ ") as anioN, month("+ columna +") mesN, day("+ columna+ ") as diaN  FROM empleados where DNI = " + DNI;
+        
+        try {
+            
+            Statement st = conexionsql.createStatement();           
+            rs = st.executeQuery(req);
+            int anio = rs.getInt("anioN");
+            int mes = rs.getInt("mesN");
+            int dia = rs.getInt("diaN");
+                              
+        }catch(Exception e){
+            
+        }
+        
         
         
     }
